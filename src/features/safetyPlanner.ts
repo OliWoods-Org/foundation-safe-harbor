@@ -74,7 +74,7 @@ export type EvidenceEntry = z.infer<typeof EvidenceEntrySchema>;
 
 const HIGH_LETHALITY_FACTORS = ['strangulationAttempt', 'threatenedKill', 'weaponAvailable', 'believesCapableOfKilling', 'stalking', 'forcedSexual'] as const;
 
-export function assessDanger(responses: DangerAssessmentSchema['shape']['responses']['_output']): DangerAssessment {
+export function assessDanger(responses: (typeof DangerAssessmentSchema)['shape']['responses']['_output']): DangerAssessment {
   const score = Object.values(responses).filter(Boolean).length;
   const keyIndicators: string[] = [];
 
